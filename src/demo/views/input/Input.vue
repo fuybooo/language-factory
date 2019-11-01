@@ -68,6 +68,7 @@
       // 上述也无效，需要下面这行代码才能生效
       this.testList = [...this.testList]
     }
+
     public changeInput (value: string) {
       if (isNaN(+value)) {
         this.row.width = 'auto'

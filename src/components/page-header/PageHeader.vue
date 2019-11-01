@@ -1,5 +1,5 @@
 <template>
-  <el-page-header v-if="!hidden" @back="goBack">
+  <el-page-header @back="goBack">
     <template v-slot:content>
       <el-breadcrumb separator="/">
         <el-breadcrumb-item v-for="item of breadList" :key="item.name">
@@ -23,9 +23,9 @@
     index: string
     title: string
   }
+
   @Component({})
   export default class PageHeader extends Vue {
-    public hidden = true
     public baseBread = [{name: 'home', title: '首页'}]
     public breadList = [...this.baseBread]
 
@@ -37,7 +37,6 @@
       const me = this
       debounce(() => {
         // 自动根据路由关系生成面包屑导航只能展示简单的通用的导航信息，如果导航信息过于复杂，则需要通过自定义实现
-        me.hidden = !!crtRoute.meta.hideBread
         let breadMenus: any = []
         executeUntil(() => me.$store.state.menus.length > 0, () => {
           const list: ListItem[] = me.$store.state.menus // [{index: '', title: ''}]
@@ -59,7 +58,10 @@
           } else {
             const crtMenu: ListItem | undefined = list.find((item: any) => item.index === crtRoute.name)
             if (crtMenu) {
-              breadMenus = [...getBreadList(getAllParentById(list, crtMenu.id)), {name: crtMenu.index, title: crtMenu.title}]
+              breadMenus = [...getBreadList(getAllParentById(list, crtMenu.id)), {
+                name: crtMenu.index,
+                title: crtMenu.title,
+              }]
             } else {
               breadMenus = []
             }
@@ -73,6 +75,7 @@
       this.$router.back()
     }
   }
+
   function getBreadList (list: any[]) {
     return list.map((item: any) => ({name: item.index, title: item.title}))
   }

@@ -19,7 +19,7 @@ export function getTime (type = 'yyyy-MM-dd HH:mm:ss', dateInstance?: Date) {
   return date
 }
 /* 生成 uuid */
-export function guid () {
+function guid () {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     // tslint:disable-next-line:no-bitwise
     const r = Math.random() * 16 | 0
@@ -27,6 +27,7 @@ export function guid () {
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
   })
 }
+export const g = guid
 /* 将查询参数转化为对象 */
 export function getUrlParams (search: string) {
   if (search.startsWith('?')) {

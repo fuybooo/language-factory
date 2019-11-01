@@ -15,7 +15,7 @@ export function setUpRouter (router: ProRouteConfig | ProRouteConfig[], meta: Ro
       ...item,
       meta: {
         ...item.meta,
-        ...meta
+        ...meta,
       },
       ...(item.children ? {children: setUpRouter(item.children, meta)} : {}),
     }

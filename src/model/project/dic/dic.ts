@@ -5,6 +5,7 @@ export interface DicItem {
   name: string
   parentCode: string
 }
+
 export interface DicType {
   SYS_USER_TYPE?: DicItem[]
 }

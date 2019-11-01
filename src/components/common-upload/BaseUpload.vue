@@ -38,6 +38,7 @@
         'x-access-token': this.token,
       },
     }
+
     public get localProps () {
       return {
         ...this.defaultProps,

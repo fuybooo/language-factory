@@ -3,6 +3,8 @@
     <el-col :span="18">
     </el-col>
     <el-col :span="6" class="tar">
+      <el-button type="text" @click="openMessage">消息中心</el-button>
+      <el-button type="text" @click="openPersonal">个人中心</el-button>
       <el-button type="text" @click="logout">{{$t('sys.logout')}}</el-button>
     </el-col>
   </el-row>
@@ -17,6 +19,14 @@
   export default class MainHeader extends Vue {
 
     public created () {
+    }
+
+    public openMessage () {
+      this.$router.push({name: 'messageList'})
+    }
+
+    public openPersonal () {
+      this.$router.push({name: 'personalInfo'})
     }
 
     public logout () {

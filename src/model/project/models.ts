@@ -15,3 +15,9 @@ export const genderList = [
     label: '女',
   },
 ]
+export const menuFlagMap = {
+  operate: {name: 'operate', route: 'elegant'},
+  teacher: {name: 'teacher', route: 'myTodo'},
+  sale: {name: 'sale', route: 'hasNoClass'},
+  system: {name: 'system', route: 'systemClass'},
+}

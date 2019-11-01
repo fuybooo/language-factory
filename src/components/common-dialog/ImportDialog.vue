@@ -29,6 +29,7 @@
       accept: '.xls,.xlsx',
       action: `${config.baseURL}/${this.uploadProps.actionUrl}`,
     }
+
     public get localProps () {
       return {
         ...this.defaultProps,

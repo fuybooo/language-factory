@@ -1,20 +1,20 @@
 <template>
-    <el-container class="h">
-        <el-main class="h">
-            <div class="common-query">
-                <base-form :schema="schema" v-model="form" inline @create="handleClick"></base-form>
-            </div>
-            <el-tree
-                    :data="data"
-                    show-checkbox
-                    node-key="id"
-                    default-expand-all
-                    check-strictly
-                    :default-checked-keys="defaultCheckedKeys">
-            </el-tree>
-            <demo-log :data="logData"></demo-log>
-        </el-main>
-    </el-container>
+  <el-container class="h">
+    <el-main class="h">
+      <div class="common-query">
+        <base-form :schema="schema" v-model="form" inline @create="handleClick"></base-form>
+      </div>
+      <el-tree
+        :data="data"
+        show-checkbox
+        node-key="id"
+        default-expand-all
+        check-strictly
+        :default-checked-keys="defaultCheckedKeys">
+      </el-tree>
+      <demo-log :data="logData"></demo-log>
+    </el-main>
+  </el-container>
 </template>
 
 <script lang="ts">

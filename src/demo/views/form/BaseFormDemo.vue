@@ -205,6 +205,7 @@
       },
     ]
     public form = fb(this.schema)
+
     public created () {
       const options: Option[] = [
         {

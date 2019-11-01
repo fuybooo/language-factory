@@ -14,4 +14,13 @@ html, body {
 a {
   color: @color-primary;
   text-decoration: none;
+  cursor: pointer;
+
+  &.link {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    color: @color-primary-hover;
+  }
 }

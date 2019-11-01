@@ -8,8 +8,10 @@ import GlobalEvent from '@/util/project/models/global-event'
 interface VueEvent {
   // tslint:disable-next-line:ban-types
   $on (event: string | string[], callback: Function): this
+  
   $emit (event: string, ...args: any[]): this
 }
+
 declare module 'vue/types/vue' {
   // 需要扩展的属性
   interface Vue {

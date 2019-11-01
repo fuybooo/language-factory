@@ -22,7 +22,7 @@ export default {
     Tip: '提示',
   },
   title: {
-    THC: '尚医至信',
+    LF: '语言工坊',
     Login: '登录',
     Forgot: '找回密码',
     Register: '注册',

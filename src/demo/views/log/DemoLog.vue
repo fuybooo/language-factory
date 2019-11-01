@@ -33,6 +33,7 @@
         label: '测试结果',
       },
     ]
+
     public get tableProps () {
       return {
         data: this.data,

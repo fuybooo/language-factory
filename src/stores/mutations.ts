@@ -1,6 +1,6 @@
 import {State} from '@/stores/states'
 import {Menu} from '@/components/common-menu/menu.model'
-import {dic, toggleLangSetting, setMenus} from '@/stores/mutation-types'
+import {dic, toggleLangSetting, setMenus, setMenuFlag} from '@/stores/mutation-types'
 
 export default {
   [toggleLangSetting] (state: State, setting: boolean) {
@@ -8,6 +8,9 @@ export default {
   },
   [setMenus] (state: State, menus: Menu[]) {
     state.menus = menus
+  },
+  [setMenuFlag] (state: State, menuFlag: string) {
+    state.menuFlag = menuFlag
   },
   [dic] (state: State, dicObj: any) {
     // @ts-ignore

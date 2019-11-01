@@ -3,16 +3,20 @@
  * @date 2019-06-27
  */
 declare type SortType = 0 | 1 | 2
+
 export interface TreeNode {
   _level: number,
   _sort: number,
   _isLeaf: boolean,
   _parent: TreeNode,
   children: TreeNode[],
+  
   [p: string]: any,
 }
+
 let nodeMap: any = {}
 let sort = 0
+
 /**
  * 将数组转换为树
  * @param list
@@ -158,7 +162,7 @@ export function getNodeById (treeData: any[], nodeId: number) {
   let resNode = null
   reGetNodeByValue(treeData, nodeId)
   return resNode
-
+  
   function reGetNodeByValue (tree: any[], id: number) {
     for (let i = 0, l = tree.length; i < l; i++) {
       const node = tree[i]

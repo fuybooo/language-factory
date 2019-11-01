@@ -53,7 +53,7 @@ export function formBuilder (schema: Schema[], extra: any = {}): any {
     }
   })
   return form
-
+  
   function getInitValue (item: Schema) {
     if (item.initValue === undefined) {
       // 该控件没有设置默认值，则根据其组件设置相应的初始值

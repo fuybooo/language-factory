@@ -22,7 +22,7 @@ export default {
     Tip: 'Tip',
   },
   title: {
-    THC: 'Tomorrow Health Care',
+    LF: 'Language Factory',
     Login: 'Login',
     Forgot: 'Forgot',
     Register: 'Register',

@@ -3,7 +3,7 @@ import {KEY_API} from '@/model/project/local-storage-keys/keys'
 import {isDev} from '@shared/env'
 
 // 可以在这里切换调试的服务器【这里是整体切换，相对而言 dev-config中是局部切换】
-// const baseURL = 'http://99.99.99.99:9999/' // 尚医至信测试环境
+// const baseURL = 'http://99.99.99.99:9999/' // 测试环境
 let baseURL = 'http://localhost:3002/api' // nodejs 环境
 if (isDev()) {
   baseURL = 'http://localhost:3002/api'

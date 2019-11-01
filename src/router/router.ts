@@ -11,6 +11,19 @@ import {toggleLangSetting} from '@/stores/mutation-types'
 import {ProRouteConfig} from '@/model/project/route/route.model'
 import {mainRoute} from '@/router/main.router'
 
+const originPush = Router.prototype.push
+// 解决重复路由跳转的问题
+// @ts-ignore
+Router.prototype.push = function push (location) {
+  const res = originPush.call(this, location)
+  // @ts-ignore
+  if (res) {
+    // @ts-ignore
+    return res.catch((err: any) => err)
+  }
+  return res
+}
+
 Vue.use(Router)
 
 const routes: ProRouteConfig[] = [
@@ -19,7 +32,6 @@ const routes: ProRouteConfig[] = [
     name: 'login',
     component: Login,
     meta: {
-      langSetting: true,
       title: 'title.Login',
       needNotToken: true,
     },
@@ -29,7 +41,6 @@ const routes: ProRouteConfig[] = [
     name: 'forgot',
     component: Forgot,
     meta: {
-      langSetting: true,
       title: 'title.Forgot',
       needNotToken: true,
     },
@@ -39,7 +50,6 @@ const routes: ProRouteConfig[] = [
     name: 'register',
     component: Register,
     meta: {
-      langSetting: true,
       title: 'title.Register',
       needNotToken: true,
     },
@@ -77,12 +87,13 @@ router.beforeEach((to, from, next) => {
   })
 })
 export default router
+
 function toggleLangSettingByTo (to: Route) {
   store.commit(toggleLangSetting, to.meta.langSetting)
 }
 
 export function setTitle (to: Route) {
-  const defaultTitle = 'title.THC'
+  const defaultTitle = 'title.LF'
   const title = to.meta ? to.meta.title || defaultTitle : defaultTitle
   // @ts-ignore
   document.title = title === defaultTitle ? defaultTitle : (i18n.t(defaultTitle) + ' - ' + i18n.t(to.meta ? to.meta.title || defaultTitle : defaultTitle))

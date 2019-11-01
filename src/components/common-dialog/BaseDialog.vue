@@ -30,20 +30,24 @@
     @Prop() public props!: object
     @Prop({default: true}) public autoClose!: boolean
     public localVisible = this.visible
+
     @Watch('visible')
     public visibleChange () {
       this.localVisible = this.visible
     }
+
     @Watch('localVisible')
     public localVisibleChange () {
       this.$emit('update:visible', this.localVisible)
     }
+
     @Emit()
     public cancel () {
       if (this.autoClose) {
         this.localVisible = false
       }
     }
+
     @Emit()
     public ok () {
       if (this.autoClose) {

@@ -12,6 +12,7 @@ export function lg (key: string): string {
 export function ls (key: string, value: string): void {
   localStorage.setItem(key, value)
 }
+
 // 简化localStorage.removeItem的写法
 export function lr (key: string): void {
   localStorage.removeItem(key)
@@ -194,6 +195,7 @@ export function debounce (func: (...args: any) => any, delay = 100, immediate = 
 export function executeUntil (conditionFn: () => boolean, fn: () => any) {
   const max = 500
   let count = 0
+  
   function execute () {
     count++
     if (conditionFn()) {
@@ -203,11 +205,13 @@ export function executeUntil (conditionFn: () => boolean, fn: () => any) {
       clearInterval(timer)
     }
   }
+  
   execute()
   const timer = setInterval(() => {
     execute()
   }, 10)
 }
+
 export function once (fn: () => void): () => void {
   let isFirst = true
   return () => {

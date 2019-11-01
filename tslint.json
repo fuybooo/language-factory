@@ -18,6 +18,7 @@
       "multiline": "always",
       "singleline": "never"
     }],
+    "no-trailing-whitespace": false,
     "no-empty": false,
     "arrow-parens": false,
     "interface-name": false,
