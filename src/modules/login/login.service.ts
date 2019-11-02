@@ -9,7 +9,7 @@ export function login (username: string, password: string) {
     username,
     password,
   }).then((res: HttpRes) => {
-    if (res.head.errCode === 0) {
+    if (res.code === 200) {
       // 设置token 用户信息等
       sc(KEY_TOKEN, res.data.token)
       sc(KEY_UID, res.data.uid)

@@ -139,7 +139,7 @@ Vue.component('BaseTable', {
       }
       // 分页 防抖 滚动加载
       me.$req(me.url, params).then((res: HttpRes) => {
-        if (res.head.errCode === 0) {
+        if (res.code === 200) {
           // 改变remoteData之后会自动执行render
           me.innerLoading = false
           me.remoteData = me.handleResult ? me.handleResult(res.data || res) : res.data[me.resultKey]
@@ -321,6 +321,7 @@ function getTableEvent () {
   const me = this
   const onEvent = (me.nodeAttrs || {}).on || {}
   return {
+    ...onEvent,
     'row-click' () {
       me.rememberRowStatus = false
       // tslint:disable-next-line:no-unused-expression
@@ -393,18 +394,41 @@ function calcHeight () {
     ...me.tableProps,
     ...(me.remoteData.length === 0 ? {} : {data: me.remoteData}),
   }).data.length ? 32 : 0
-  const wrapperHeight = getSpaceHeight('.common-el-main-padding.el-main')
+  const wrapperHeight = getSpaceHeight('.main-content-wrap')
+  const innerPaddingHeight = getSpaceHeight('.el-main.common-el-main-padding')
   const pageHeaderHeight = getClientHeight('.common-el-page-padding.el-page-header')
   const tableSpaceHeight = getSpaceHeight('.base-table')
   const borderHeight = 1
   // 计算fixed element的高度
   let fixedElementsHeight = 0
-  me.fixedElements.split('').forEach((selector: string) => {
+  me.fixedElements.split(' ').forEach((selector: string) => {
     fixedElementsHeight += getClientHeight(selector)
   })
   // 默认会排除的高度 这意味着 当查询条件使用 common-query 时无需传参数即可自动计算
   const defaultFixedElementHeight = getClientHeight('.common-query')
-  me.localHeight = Math.max(config.MIN_WIN_HEIGHT, window.innerHeight) - headerHeight - paginationHeight - wrapperHeight - pageHeaderHeight - tableSpaceHeight - borderHeight - me.fixedHeight - defaultFixedElementHeight
+  // console.log(headerHeight, '头部高度')
+  // console.log(wrapperHeight, '外部边距高度')
+  // console.log(pageHeaderHeight, '翻页头部高度')
+  // console.log(fixedElementsHeight, '额外高度')
+  // console.log(innerPaddingHeight, '内部边距高度')
+  // console.log(defaultFixedElementHeight, '查询区域高度')
+  // console.log(tableSpaceHeight, '表格边距高度')
+  // console.log(paginationHeight, '分页器高度')
+  // console.log(window.innerHeight, '窗口高度')
+  // console.log(me.fixedHeight, '固定高度')
+  // console.log(borderHeight, '边框高度')
+  me.localHeight = Math.max(config.MIN_WIN_HEIGHT, window.innerHeight)
+    - headerHeight
+    - paginationHeight
+    - wrapperHeight
+    - innerPaddingHeight
+    - pageHeaderHeight
+    - tableSpaceHeight
+    - borderHeight
+    - me.fixedHeight
+    - defaultFixedElementHeight
+    - fixedElementsHeight
+  // console.log(me.localHeight, '表格最终高度')
 }
 
 function getParams () {
@@ -413,6 +437,8 @@ function getParams () {
   const params = deepClone(me.params)
   delete params[UUID_KEY]
   delete params._first
+  // 循环删除筛选条件字段
+  deleteFilterFields.bind(me)(params)
   return {
     ...params,
     currentPage: me.currentPage,
@@ -508,5 +534,20 @@ function mergeTableFunctionProps () {
       }
       return `${outerRowClassName} ${innerRowClassName}`
     },
+  }
+}
+
+function deleteFilterFields (params: any) {
+  // @ts-ignore
+  const me = this
+  // 找到哪些字段是筛选字段
+  const filterCols = me.columns.filter((col: Column) => {
+    if (col && col.props && col.props.filters) {
+      return true
+    }
+  })
+  // 循环删除
+  for (const item of filterCols) {
+    delete params[item.prop]
   }
 }

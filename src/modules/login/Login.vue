@@ -3,11 +3,11 @@
     <el-main class="h">
       <div class="login-wrap">
         <div class="login-box">
-          <div class="logo"></div>
+          <!--          <div class="logo"></div>-->
           <div class="login-form">
             <el-form :model="form" :rules="rules" size="medium" ref="form" label-position="left" label-width="0px">
               <el-form-item>
-                <h3 class="title">{{$t('login.title')}}</h3>
+                <h3 class="title">Language Factory</h3>
               </el-form-item>
               <el-form-item label="" prop="username">
                 <el-input v-model="form.username" :placeholder="$t('login.inputUser')">
@@ -25,9 +25,9 @@
                     <el-checkbox v-model="form.remember" checked>{{$t('login.remember')}}</el-checkbox>
                   </el-col>
                   <el-col :span="12" class="tar">
-                    <router-link to="/register">{{$t('login.register')}}</router-link>
-                    /
-                    <router-link to="/forgot">{{$t('login.forgot')}}</router-link>
+                    <!--                    <router-link to="/register">{{$t('login.register')}}</router-link>-->
+                    <!--                    /-->
+                    <a @click="clickForgot">{{$t('login.forgot')}}</a>
                   </el-col>
                 </el-row>
               </el-form-item>
@@ -73,8 +73,8 @@
     public created () {
       if (gc(KEY_TOKEN)) {
         // 发送请求是否已经登录了，若登录了，则直接跳转到登录否则
-        this.$req(this.$urls.login.hasLogin, {token: gc(KEY_TOKEN)}).then((res: HttpRes) => {
-          if (res.head.errCode === 0) {
+        this.$req(this.$urls.login.hasLogin).then((res: HttpRes) => {
+          if (res.code === 200) {
             // 已经登录，直接跳转
             this.$router.push({name: 'main'})
           }
@@ -92,6 +92,10 @@
           login.bind(this)(this.form.username, this.form.password)
         }
       })
+    }
+
+    public clickForgot () {
+      this.$alert('请联系校区管理员', '忘记密码')
     }
   }
 </script>

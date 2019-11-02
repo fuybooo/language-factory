@@ -10,6 +10,7 @@ import store from '@/stores/store'
 import {toggleLangSetting} from '@/stores/mutation-types'
 import {ProRouteConfig} from '@/model/project/route/route.model'
 import {mainRoute} from '@/router/main.router'
+import demoRouter from '@/demo/router/router'
 
 const originPush = Router.prototype.push
 // 解决重复路由跳转的问题
@@ -54,7 +55,8 @@ const routes: ProRouteConfig[] = [
       needNotToken: true,
     },
   },
-  // demoRouter, // 与main平级的demo 必须写在 /main/demo之上
+  // @ts-ignore
+  demoRouter,
   mainRoute,
   {
     path: '*',

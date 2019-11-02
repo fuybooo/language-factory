@@ -22,11 +22,18 @@ export default Vue.component('baseMenuComponent', {
             index: menu.index,
           },
         }, [
-          createElement('template', {slot: 'title'}, menu.title),
+          createElement('template', {slot: 'title'}, [
+            createElement('i', {class: `${menu.icon || ''} menu-icon`}),
+            createElement('span', {class: `menu-item-title`}, menu.title),
+          ]),
           createElement('base-menu', {props: {menus: menu.children, parent: menu}}),
         ])
       } else {
-        return createElement('el-menu-item', {props: {index: menu.index}}, menu.title)
+        return createElement('el-menu-item', {props: {index: menu.index}},
+          [
+            createElement('i', {class: `${menu.icon || ''} menu-icon`}),
+            createElement('span', {class: `menu-item-title`}, menu.title),
+          ])
       }
     })
   },

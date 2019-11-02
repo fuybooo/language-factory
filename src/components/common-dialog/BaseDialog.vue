@@ -13,8 +13,16 @@
     </template>
     <template slot="footer">
       <slot name="footer">
-        <el-button @click="cancel">取 消</el-button>
-        <el-button type="primary" @click="ok">确 定</el-button>
+        <template v-if="onlyOk">
+          <el-button type="primary" @click="ok">确 定</el-button>
+        </template>
+        <template v-else-if="onlyCancel">
+          <el-button type="primary" @click="cancel">取 消</el-button>
+        </template>
+        <template v-else>
+          <el-button @click="cancel">取 消</el-button>
+          <el-button type="primary" @click="ok">确 定</el-button>
+        </template>
       </slot>
     </template>
   </el-dialog>
@@ -26,9 +34,11 @@
 
   @Component({})
   export default class BaseDialog extends Vue {
-    @Prop({default: false}) public visible!: boolean
+    @Prop({default: false, type: Boolean}) public visible!: boolean
     @Prop() public props!: object
-    @Prop({default: true}) public autoClose!: boolean
+    @Prop({default: true, type: Boolean}) public autoClose!: boolean
+    @Prop({default: false, type: Boolean}) public onlyOk!: boolean
+    @Prop({default: false, type: Boolean}) public onlyCancel!: boolean
     public localVisible = this.visible
 
     @Watch('visible')

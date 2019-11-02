@@ -1,6 +1,10 @@
 <template>
   <el-row type="flex" justify="center" align="middle">
     <el-col :span="18">
+      <div class="logo">
+        <span class="logo-img"></span>
+        <span class="text">Language Factory</span>
+      </div>
     </el-col>
     <el-col :span="6" class="tar">
       <el-button type="text" @click="openMessage">消息中心</el-button>

@@ -64,7 +64,7 @@ function getContent (moduleConfig, item) {
     // 执行删除
     public del (row: any) {
       this.$req(this.$urls.tenant.delete, {id: row.id}).then((res: HttpRes) => {
-        if (res.head.errCode === 0) {
+        if (res.code === 200) {
           (this.$refs.table as any).search(true)
         }
         // 根据请求结果进行提示

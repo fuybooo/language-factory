@@ -30,7 +30,7 @@
     public getMenus () {
       // 若菜单策略为后台配置，则发送请求，否则使用路由直接进行转化
       // this.$req(this.$urls.menu.list).then((res: HttpRes) => {
-      //   if (res.head.errCode === 0) {
+      //   if (res.code === 200) {
       //     this.menus = getMenus(res.data.results)
       //     this.$store.commit(setMenus, res.data.results.filter((item: any) => item.parentId !== 0))
       //   }

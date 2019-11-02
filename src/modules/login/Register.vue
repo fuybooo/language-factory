@@ -45,7 +45,7 @@
 
     public register () {
       this.$req(this.$urls.login.register, this.form).then((res: HttpRes) => {
-        if (res.head.errCode === 0) {
+        if (res.code === 200) {
           // 注册成功 - 自动登录
           login(this.form.username, this.form.password)
         }

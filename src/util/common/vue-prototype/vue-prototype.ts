@@ -21,12 +21,12 @@ Vue.prototype.$success = (message: string, title?: string) => {
   notify('success', message, title)
 }
 Vue.prototype.$tip = debounce((res: HttpRes) => {
-  notify(res.head.errCode === 0 ? 'success' : 'error', res.msg)
+  notify(res.code === 200 ? 'success' : 'error', res.msg)
 })
 // Vue.prototype.$tip = (res: HttpRes) => {
 //   // 判断条件根据项目实际情况定义
 //   debounce(() => {
-//     notify(res.head.errCode === 0 ? 'success' : 'error', res.msg)
+//     notify(res.code === 200 ? 'success' : 'error', res.msg)
 //   })()
 // }
 

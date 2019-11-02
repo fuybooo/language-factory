@@ -67,7 +67,7 @@
       // 测试请求
       // this.$req(this.$urls.test.getRules, {offset: 0, pagesize: 20}, 'get').then((res: HttpRes) => {
       //   // console.log(res)
-      //   if (res.head.errCode === 0) {
+      //   if (res.code === 200) {
       //   }
       //   this.$tip(res)
       // })

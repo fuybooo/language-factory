@@ -3,6 +3,7 @@ import '@/components/common-form/BaseForm'
 import '@/components/common-table/BaseTable'
 import '@/components/common-view-html/BaseViewHtml'
 import BaseMenu from '@/components/common-menu/BaseMenu'
+import BaseAction from '@/components/common-action-button/BaseAction.vue'
 import BaseConfirm from '@/components/common-confirm-button/BaseConfirm.vue'
 import LangSetting from '@/components/lang-setting/LangSetting.vue'
 import PageHeader from '@/components/page-header/PageHeader.vue'
@@ -12,6 +13,7 @@ import BaseFlex from '@/components/common-flex/BaseFlex.vue'
 
 // 注册全局组件
 Vue.component('AppLangSetting', LangSetting)
+Vue.component('BaseAction', BaseAction)
 Vue.component('BaseConfirm', BaseConfirm)
 Vue.component('AppPageHeader', PageHeader)
 Vue.component('BaseMenu', BaseMenu)

@@ -21,3 +21,7 @@ export const menuFlagMap = {
   sale: {name: 'sale', route: 'hasNoClass'},
   system: {name: 'system', route: 'systemClass'},
 }
+export const ageList = Array(42).fill(0).map((item, i) => ({
+  id: i + 18,
+  label: i + 18,
+}))

@@ -88,7 +88,7 @@
 
     public search () {
       this.$req(this.$urls.demo.table.getById, {id: this.id}).then((res: HttpRes) => {
-        if (res.head.errCode === 0) {
+        if (res.code === 200) {
           this.updateForm(res.data)
         }
       })

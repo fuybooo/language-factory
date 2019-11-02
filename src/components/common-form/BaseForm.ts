@@ -523,7 +523,7 @@ function createBtnItem (createElement: typeof Vue.prototype.$createElement) {
         }
       },
     },
-  }, [me.btn.text || (me.inline ? '创建' : me.formPattern === 'view' ? '编辑' : '保存')]), ...(me.inline ? [] : [createElement('el-button', {
+  }, [me.btn.text || (me.inline ? '创建' : me.formPattern === 'view' ? '编辑' : '保存')]), ...(me.inline ? [] : (me.formPattern === 'view' ? [] : [createElement('el-button', {
     // 绑定取消事件
     nativeOn: {
       click () {
@@ -560,7 +560,7 @@ function createBtnItem (createElement: typeof Vue.prototype.$createElement) {
         }
       },
     },
-  }, me.formPattern === 'view' ? '返回' : '取消')])])
+  }, me.formPattern === 'view' ? '返回' : '取消')]))])
   return me.isRow ? [createElement('el-col', {}, [btnFormItem])] : btnFormItem
 }
 

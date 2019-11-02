@@ -1,7 +1,6 @@
 import {ProRouteConfig} from '@/model/project/route/route.model'
 import Main from '@/modules/main/Main.vue'
 import MainHome from '@/modules/main/MainHome.vue'
-import demoRouter from '@/demo/router/router'
 import operateRouter from '@/modules/operate/router/router'
 import saleRouter from '@/modules/sale/router/router'
 import systemRouter from '@/modules/system/router/router'
@@ -27,7 +26,6 @@ export const mainRoute: ProRouteConfig = {
         hidden: true,
       },
     },
-    demoRouter,
     // 运营平台路由
     operateRouter,
     // 销售平台路由

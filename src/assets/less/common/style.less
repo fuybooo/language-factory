@@ -1,5 +1,37 @@
 @import "var";
 
+.black-1 {
+  color: @black-1;
+}
+
+.black-2 {
+  color: @black-2;
+}
+
+.black-3 {
+  color: @black-3;
+}
+
+.black-4 {
+  color: @black-4;
+}
+
+.blue {
+  color: @blue;
+}
+
+.green {
+  color: @green;
+}
+
+.red {
+  color: @red;
+}
+
+.orange {
+  color: @orange;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -9,6 +41,8 @@ html, body {
   font-weight: 400;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   overflow: auto;
+  color: @black-1;
+  background-color: @page-bg;
 }
 
 a {
@@ -22,5 +56,37 @@ a {
 
   &:hover {
     color: @color-primary-hover;
+  }
+
+  &.red {
+    .red;
+
+    &:hover {
+      .red;
+    }
+  }
+
+  &.blue {
+    .blue;
+
+    &:hover {
+      .blue;
+    }
+  }
+
+  &.orange {
+    .orange;
+
+    &:hover {
+      .orange;
+    }
+  }
+
+  &.green {
+    .green;
+
+    &:hover {
+      .green;
+    }
   }
 }

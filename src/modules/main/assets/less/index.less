@@ -1,0 +1,113 @@
+@import "../../../../assets/less/common/var";
+
+.main-header {
+  line-height: 50px;
+  border-bottom: 1px solid @color-border;
+  background-color: #fff;
+}
+
+.main-content-wrap {
+  padding: 20px;
+}
+
+.main-content {
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.common-el-main-padding.el-main {
+  padding: 10px;
+}
+
+.common-el-page-padding.el-page-header {
+  padding-top: 10px;
+}
+
+.main-header-menu {
+  height: 100%;
+  width: 264px;
+  padding-top: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, .25);
+
+  .el-menu-item.is-active {
+    background-color: @page-bg;
+  }
+}
+
+.content {
+  width: 735px;
+  margin: 0 auto;
+}
+
+.home {
+  background-color: @bg;
+
+  .welcome {
+    .content;
+    margin-top: 70px;
+
+    .avatar {
+      background-image: url("../img/avatar.png");
+      background-size: contain;
+      width: 68px;
+      height: 68px;
+      border: 1px solid transparent;
+      border-radius: 100%;
+    }
+
+    .greet-info {
+      .greet {
+        margin-top: 5px;
+        font-size: 20px;
+      }
+
+      .text {
+        margin-top: 10px;
+        color: @black-4;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .platform-list {
+    .content;
+    margin-top: 35px;
+
+    & > .title {
+      font-size: 24px;
+      margin-bottom: 28px;
+    }
+
+    .platform-card {
+      width: 266px;
+
+      .el-card__body {
+        padding: 0;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .image {
+        width: 266px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .desc {
+        margin-top: 8px;
+        color: @black-4;
+      }
+
+      .link {
+        margin-top: 12px;
+        text-align: right;
+      }
+    }
+  }
+}

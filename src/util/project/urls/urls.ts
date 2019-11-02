@@ -19,60 +19,12 @@ export interface Urls {
     register: urlType,
     logout: urlType,
   },
-  test: {
-    getRules: urlType,
-  },
-  user: {
+  // user: {
+  //   getCrt: urlType,
+  // },
+  message: {
     list: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
-  },
-  menu: {
-    list: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
-    updateSort: urlType,
-  },
-  tenant: {
-    list: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
-  },
-  dictionary: {
-    list: urlType,
-    listType: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
-  },
-  organization: {
-    list: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
-    upload: string,
-  },
-  diary: {
-    list: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
-  },
-  plan: {
-    list: urlType,
-    get: urlType,
-    create: urlType,
-    delete: urlType,
-    update: urlType,
+    changeStatus: urlType,
   },
 }
 
@@ -88,67 +40,16 @@ const urls: Urls = {
   },
   login: {
     // 登录
-    login: {url: 'login', isStatic: true, prefix: prefix.base},
-    // 根据token判断是否已经登录
-    hasLogin: {url: 'hasLogin', isStatic: true, prefix: prefix.base},
-    forgot: {url: 'forgot', isStatic: true, prefix: prefix.base},
+    login: {url: 'login', isStatic: true, prefix: prefix.login},
+    // 根据token判断是否已经登录，若已登陆，则返回用户的登录信息
+    hasLogin: {url: 'hasLogin', isStatic: true, prefix: prefix.login},
+    forgot: {url: 'forgot', isStatic: true, prefix: prefix.login},
     register: {url: 'register'},
-    logout: {url: 'logout', isStatic: true, prefix: prefix.base},
+    logout: {url: 'logout', isStatic: true, prefix: prefix.login},
   },
-  test: {
-    getRules: 'platform-extend/rule/rule/search',
-  },
-  user: {
-    list: 'user/list',
-    get: 'user/get',
-    delete: 'user/delete',
-    create: 'user/create',
-    update: 'user/update',
-  },
-  menu: {
-    list: {url: 'menu/list', isStatic: true},
-    get: 'menu/get',
-    delete: 'menu/delete',
-    create: 'menu/create',
-    update: 'menu/update',
-    updateSort: 'menu/updateSort',
-  },
-  tenant: {
-    list: 'tenant/list',
-    get: 'tenant/get',
-    delete: 'tenant/delete',
-    create: 'tenant/create',
-    update: 'tenant/update',
-  },
-  dictionary: {
-    list: 'dictionary/list',
-    listType: 'dictionary/listType', // 根据类型查询字典 入参可以是字符串，也可以是数组
-    get: 'dictionary/get',
-    delete: 'dictionary/delete',
-    create: 'dictionary/create',
-    update: 'dictionary/update',
-  },
-  organization: {
-    list: 'organization/list',
-    get: 'organization/get',
-    delete: 'organization/delete',
-    create: 'organization/create',
-    update: 'organization/update',
-    upload: 'organization/upload',
-  },
-  diary: {
-    list: 'diary/list',
-    get: 'diary/get',
-    create: 'diary/create',
-    delete: 'diary/delete',
-    update: 'diary/update',
-  },
-  plan: {
-    list: 'plan/list',
-    get: 'plan/get',
-    create: 'plan/create',
-    delete: 'plan/delete',
-    update: 'plan/update',
+  message: {
+    list: {url: 'list', isStatic: true, prefix: prefix.message},
+    changeStatus: {url: 'changeStatus', isStatic: true, prefix: prefix.message},
   },
 }
 Vue.prototype.$urls = urls

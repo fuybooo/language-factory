@@ -54,7 +54,7 @@ function getContent (moduleConfig, item) {
 
     public search () {
       this.$req(this.$urls.tenant.get, {id: this.id}).then((res: HttpRes) => {
-        if (res.head.errCode === 0) {
+        if (res.code === 200) {
           this.updateForm(res.data)
         }
       })
@@ -68,7 +68,7 @@ function getContent (moduleConfig, item) {
       (this.$refs.form as any).$refs.form.validate((valid: boolean) => {
         if (valid) {
           this.$req(this.$urls.tenant[this.formPattern === 'create' ? 'create' : 'update'], {...this.form, ...(this.id ? {id: this.id} : {})}).then((res: HttpRes) => {
-            if (res.head.errCode === 0) {
+            if (res.code === 200) {
               this.$router.back()
             }
             this.$tip(res)

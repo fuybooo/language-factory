@@ -68,6 +68,7 @@ export function getMenusByMenuFlag (menuFlag: string) {
   // @ts-ignore
   return transferRoutesToMenus(leftMenus.concat(personalRouter.children).concat(messageRouter.children))
 }
+
 // 根据菜单标志获取相应的菜单 【多余的菜单隐藏】
 export function getMenusByMenuFlagHidden (menuFlag: string) {
   // 将特性路由和公共路由合并起来 【只有公共路由在所有路由中，bread才能正常显示】

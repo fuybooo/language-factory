@@ -162,13 +162,19 @@
         },
       },
     ]
+
     // 监听表格的各种事件
-    public tableAttrs = {
-      on: {
-        'row-click' () {
+    public get tableAttrs () {
+      // const me = this
+      return {
+        on: {
+          'row-click' () {
+            // console.log(me)
+          },
         },
-      },
+      }
     }
+
     public handleResult = (data: any) => {
       return data.results.map((item: any) => ({...item, customAge: item.age}))
     }
@@ -179,7 +185,7 @@
 
     public del (row: any) {
       this.$req(this.$urls.demo.table.del, {id: row.id}).then((res: HttpRes) => {
-        if (res.head.errCode === 0) {
+        if (res.code === 200) {
           // 从第一页查询
           // this.form._uuid = guid();
           // 从当前页查询

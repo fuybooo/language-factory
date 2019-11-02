@@ -16,6 +16,8 @@
     <el-button type="primary" @click="testListClick(1)">改变list的第一项</el-button>
     <el-button type="primary" @click="testListClick(2)">给list的第二项增加一个字符串属性</el-button>
     <el-button type="primary" @click="testListClick(3)">给list的第三项增加一个对象属性</el-button>
+    <h3>测试保存按钮组件</h3>
+    <base-action @click="handleClick" :loading.sync="loading"></base-action>
   </div>
 </template>
 
@@ -50,6 +52,7 @@
         a: 3,
       },
     ]
+    public loading = false
 
     public testListClick (type: number) {
       if (type === 1) {
@@ -83,6 +86,12 @@
       } else {
         item.width = value || 'auto'
       }
+    }
+
+    public handleClick () {
+      setTimeout(() => {
+        this.loading = false
+      }, 200)
     }
   }
 </script>

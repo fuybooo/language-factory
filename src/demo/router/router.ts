@@ -13,7 +13,7 @@ import CascaderDemo from '@/demo/views/cascader/cascader.vue'
 import {setUpRouter} from '@/model/project/route/route.fn'
 
 const demoRouter: ProRouteConfig = {
-  path: 'demo',
+  path: '/demo',
   name: 'demo',
   component: Demo,
   children: [
