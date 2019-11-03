@@ -11,7 +11,7 @@ import {debounce} from '@/util/common/fns/fns'
 // notify 通知
 function notify (type: MessageType, message: string, title?: string | undefined) {
   // @ts-ignore
-  Notification[type]({message, title: title || i18n.t('common.Tip')})
+  Notification[type]({message, title: title || i18n.t('common.Tip'), duration: 2000})
 }
 
 Vue.prototype.$error = (message: string, title?: string) => {
